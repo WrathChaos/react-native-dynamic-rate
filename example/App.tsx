@@ -1,119 +1,107 @@
-import React from "react";
+import React, { Component } from "react";
 import {
   View,
+  Text,
   StatusBar,
+  Dimensions,
   StyleSheet,
-  ScrollView,
   SafeAreaView
 } from "react-native";
 
-import {
-  Header,
-  Colors,
-  LearnMoreLinks,
-  DebugInstructions,
-  ReloadInstructions
-} from "react-native/Libraries/NewAppScreen";
+import DynamicRate from "./lib/DynamicRate";
 
-import Text from "./lib/StatefulComponent/Text";
-import { Hello } from "./lib/FunctionalComponent/Hello";
+const { width: ScreenWidth } = Dimensions.get("window");
 
-declare var global: { HermesInternal: null | {} };
+interface IProps {}
 
-const App = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}
-        >
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
+interface IState {
+  value: number;
+  rate: number;
+}
+
+class App extends Component<IProps, IState> {
+  numberFormat = value => new Intl.NumberFormat("tr-TR", {}).format(value);
+
+  renderExampleCard = (value, rate) => (
+    <View
+      style={{
+        padding: 16,
+        margin: 16,
+        borderRadius: 8,
+        width: ScreenWidth * 0.8,
+        backgroundColor: "#fdfdfd",
+        shadowRadius: 8,
+        shadowOpacity: 0.3,
+        shadowColor: "#757575",
+        shadowOffset: {
+          width: 0,
+          height: 3
+        }
+      }}
+    >
+      <DynamicRate value={value} rate={rate} textStyle={null} />
+      <View
+        style={{
+          width: "100%",
+          height: 1,
+          backgroundColor: "#ccc",
+          marginTop: 16,
+          marginBottom: 16
+        }}
+      />
+      <View>
+        <Text style={{ color: "gray" }}>
+          <Text style={{ fontWeight: "600", color: "#290404" }}>
+            Starting Value:
+          </Text>{" "}
+          {this.numberFormat(value)}
+        </Text>
+        <Text style={{ color: "gray" }}>
+          <Text style={{ fontWeight: "600", color: "#290404" }}>
+            Change Rate Per Hour:
+          </Text>{" "}
+          {this.numberFormat(rate)}
+        </Text>
+      </View>
+    </View>
+  );
+
+  render() {
+    return (
+      <>
+        <StatusBar barStyle="dark-content" />
+        <SafeAreaView>
+          <View
+            style={{
+              marginTop: "30%",
+              alignItems: "center",
+              justifyContent: "center"
+            }}
+          >
+            <View style={{ marginLeft: 32, marginRight: 32 }}>
+              <Text
+                style={{
+                  fontSize: 40,
+                  color: "#290404",
+                  fontWeight: "bold",
+                  textAlign: "center"
+                }}
+              >
+                React Native Dynamic Rate
+              </Text>
             </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text size="XL" bold style={styles.sectionTitle}>
-                Step One
-              </Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.tsx</Text> to change
-                this screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text size="XL" bold style={styles.sectionTitle}>
-                See Your Changes
-              </Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text size="XL" bold style={styles.sectionTitle}>
-                Debug
-              </Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text size="XL" bold style={styles.sectionTitle}>
-                Learn More
-              </Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
+
+            <View style={{ marginTop: 32 }}>
+              {this.renderExampleCard(150000, 3600)}
+              {this.renderExampleCard(501394014, 50300)}
+              {this.renderExampleCard(105, 305)}
+              {this.renderExampleCard(0, 5014)}
             </View>
           </View>
-          <Hello name="Test" enthusiasmLevel={5} />
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
-
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter
-  },
-  engine: {
-    position: "absolute",
-    right: 0
-  },
-  body: {
-    backgroundColor: Colors.white
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: "600",
-    color: Colors.black
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: "400",
-    color: Colors.dark
-  },
-  highlight: {
-    fontWeight: "700"
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: "600",
-    padding: 4,
-    paddingRight: 12,
-    textAlign: "right"
+        </SafeAreaView>
+      </>
+    );
   }
-});
+}
 
 export default App;
