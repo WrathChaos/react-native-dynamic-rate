@@ -19,7 +19,7 @@ class App extends React.Component<IProps, IState> {
 
   renderExampleCard = (value, rate) => (
     <View style={styles.cardStyle}>
-      <DynamicRate value={value} rate={rate} textStyle={null} />
+      <DynamicRate value={value} rate={rate} />
       <View style={styles.dividerStyle} />
       <View>
         <Text style={styles.cardTitleTextStyle}>

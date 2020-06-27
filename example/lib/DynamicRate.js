@@ -39,13 +39,25 @@ export default class DynamicRate extends React.Component {
     return new Intl.NumberFormat(numberFormat, {}).format(value);
   };
 
-  render() {
+  renderTextContent = () => {
     const { dynamicValue } = this.state;
+    const { customNumberFormat = null, disableNumberFormatting } = this.props;
+
+    if (customNumberFormat) {
+      return customNumberFormat(dynamicValue);
+    } else {
+      return disableNumberFormatting
+        ? dynamicValue
+        : this.numberFormat(dynamicValue);
+    }
+  };
+
+  render() {
     const { textStyle, TextComponent = Text } = this.props;
     return (
       <View style={styles.container}>
         <TextComponent style={textStyle || styles.textStyle}>
-          {this.numberFormat(dynamicValue)}
+          {this.renderTextContent()}
         </TextComponent>
       </View>
     );
