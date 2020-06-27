@@ -1,6 +1,7 @@
 import * as React from "react";
 import { View, Text, StatusBar, SafeAreaView } from "react-native";
-import DynamicRate from "./build/dist/DynamicRate";
+import DynamicRate from "./lib/DynamicRate";
+
 /**
  * ? Local Imports
  */
@@ -14,7 +15,7 @@ interface IState {
 }
 
 class App extends React.Component<IProps, IState> {
-  numberFormat = value => new Intl.NumberFormat("tr", {}).format(value);
+  numberFormat = (value) => new Intl.NumberFormat("tr", {}).format(value);
 
   renderExampleCard = (value, rate) => (
     <View style={styles.cardStyle}>
