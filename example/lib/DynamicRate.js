@@ -10,7 +10,7 @@ export default class DynamicRate extends React.Component {
     super(props);
     this.state = {
       dynamicRate: 0,
-      dynamicValue: props.value || 0,
+      dynamicValue: props.initialValue || 0,
     };
   }
 

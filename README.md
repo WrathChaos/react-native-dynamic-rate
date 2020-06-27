@@ -44,17 +44,21 @@ Rate is depends on the hour you need to calculate your rate depends on the **/pe
 3600 rate is 1 plus per second.
 
 ```js
-<DynamicRate value={150000} rate={3600} />
+<DynamicRate initialValue={150000} rate={3600} />
 ```
 
 # Configuration - Props
 
-| Property |  Type   | Default | Description                                             |
-| -------- | :-----: | :-----: | ------------------------------------------------------- |
-| outline  | boolean |  true   | make the button outline                                 |
-| solid    | boolean |  false  | make the button with a solid background and a shadow    |
-| gradient | boolean |  false  | make the button with a gradient background and a shadow |
-| width    | number  |   150   | change the button's width                               |
+| Property                |   Type    | Default | Description                                                                             |
+| ----------------------- | :-------: | :-----: | --------------------------------------------------------------------------------------- |
+| rate                    |  number   | default | set the increase rate                                                                   |
+| initialValue            |  number   | default | set the initial value                                                                   |
+| numberFormat            |  string   | "tr-TR" | you can set your own language/region's number format                                    |
+| customNumberFormat      | function  | default | if you do not want to use the default number format, you can set it your own            |
+| disableNumberFormatting |  boolean  |  false  | if you do not want any number formatting, you can simply disable it                     |
+| disableNumberFormatting |  boolean  |  false  | if you do not want any number formatting, you can simply disable it                     |
+| textStyle               |   style   | default | set your own text style instead of default one                                          |
+| TextComponent           | component |  Text   | set your own custom Text component instead of the default react native's Text component |
 
 ## Author
 

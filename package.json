@@ -1,14 +1,16 @@
 {
-  "name": "react-native-typescript-library-starter",
-  "version": "0.0.1",
-  "description": "WIP",
+  "name": "react-native-dynamic-rate",
+  "version": "0.1.0",
+  "description": "Dynamically increase the value by given rate with React Native",
   "main": "index.tsx",
-  "repository": "git@github.com:WrathChaos/react-native-typescript-library-starter.git",
+  "repository": "git@github.com:WrathChaos/react-native-dynamic-rate.git",
   "author": "FreakyCoder <kurayogun@gmail.com>",
   "license": "MIT",
   "homepage": "https://www.freakycoder.com",
-  "bugs": "https://github.com/WrathChaos/react-native-typescript-library-starter/issues",
+  "bugs": "https://github.com/WrathChaos/react-native-dynamic-rate/issues",
   "keywords": [
+    "dynamic",
+    "rate",
     "FreakyCoder",
     "freakycoder",
     "kuray",
@@ -19,22 +21,8 @@
     "ui-lib",
     "rn"
   ],
-  "scripts": {
-    "build": "cd lib && tsc && cp ../package.json ../build/dist/ && Echo Build completed!",
-    "publish": "npm publish --access public && echo Package published!"
-  },
-  "dependencies": {
-    "react": ">= 16.x.x",
-    "react-native": ">= 0.55.x"
-  },
   "peerDependencies": {
     "react": ">= 16.x.x",
     "react-native": ">= 0.55.x"
-  },
-  "devDependencies": {
-    "@types/react": "^16.9.17",
-    "@types/react-native": "^0.60.28",
-    "react-native-typescript-transformer": "^1.2.13",
-    "typescript": "^3.7.4"
   }
 }
