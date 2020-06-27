@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import * as React from "react";
 import { View, Text, StatusBar, SafeAreaView } from "react-native";
-import DynamicRate from "./lib/DynamicRate";
+import DynamicRate from "./build/dist/DynamicRate";
 /**
  * ? Local Imports
  */
@@ -9,12 +9,12 @@ import styles from "./App.style";
 interface IProps {}
 
 interface IState {
-  value: number;
   rate: number;
+  value: number;
 }
 
-class App extends Component<IProps, IState> {
-  numberFormat = value => new Intl.NumberFormat("tr-TR", {}).format(value);
+class App extends React.Component<IProps, IState> {
+  numberFormat = value => new Intl.NumberFormat("tr", {}).format(value);
 
   renderExampleCard = (value, rate) => (
     <View style={styles.cardStyle}>

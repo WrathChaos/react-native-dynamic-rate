@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { StyleSheet, View, Text, StyleProp } from "react-native";
+import * as React from "react";
+import { StyleSheet, View, Text } from "react-native";
 
 interface Props {
   rate: number;
@@ -12,7 +12,7 @@ interface State {
   dynamicValue: number;
 }
 
-export default class DynamicRate extends Component<Props, State> {
+export default class DynamicRate extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
 
