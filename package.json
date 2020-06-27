@@ -1,8 +1,8 @@
 {
   "name": "react-native-dynamic-rate",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Dynamically increase the value by given rate with React Native",
-  "main": "index.tsx",
+  "main": "./lib/DynamicRate.js",
   "repository": "git@github.com:WrathChaos/react-native-dynamic-rate.git",
   "author": "FreakyCoder <kurayogun@gmail.com>",
   "license": "MIT",
